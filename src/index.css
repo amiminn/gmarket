@@ -1,0 +1,171 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "Fredoka";
+  src: url("/src/assets/fonts/Fredoka/Fredoka-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fredoka";
+  src: url("/src/assets/fonts/Fredoka/Fredoka-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Fredoka";
+  src: url("/src/assets/fonts/Fredoka/Fredoka-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/src/assets/fonts/JetBrains/JetBrainsMono-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/src/assets/fonts/JetBrains/JetBrainsMono-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/src/assets/fonts/JetBrains/JetBrainsMono-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* === GLOBAL CUSTOM COMPONENTS (Tailwind v4 compatible) === */
+
+.bg-background {
+  @apply bg-white;
+}
+
+.active {
+  /* hapus kode dark mode lama */
+  @apply border-r-4 bg-red-100 font-semibold text-red-600 hover:bg-red-100;
+}
+
+/* Floating animation class */
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* CodeMirror editor style */
+.cm-editor {
+  @apply overflow-hidden rounded p-3;
+}
+
+/* Labels */
+.label-app {
+  @apply block truncate font-semibold text-gray-700;
+}
+
+/* Full-width Input */
+.form-input-app {
+  @apply rounded-md border-2 border-solid border-slate-200 px-3 py-2 w-full
+    outline-none transition-all duration-150 ease-in-out
+    read-only:bg-blue-50 read-only:text-slate-600
+    focus:border-[#e81313] focus:outline-2 focus:outline-offset-2 focus:outline-transparent
+    disabled:bg-blue-50 disabled:text-slate-600;
+}
+
+/* Buttons */
+.button-primary {
+  @apply transform rounded-md bg-red-500 px-2 py-2 text-center text-white duration-200 hover:bg-red-700;
+}
+
+/* Tables */
+tr,
+th,
+td {
+  @apply text-left;
+}
+
+td {
+  @apply py-2;
+}
+
+/* Calendar */
+.fc-day {
+  @apply cursor-pointer text-xl hover:bg-red-100 hover:text-red-500;
+}
+
+.fc-day-today {
+  @apply bg-red-100 text-red-500 transition duration-200;
+}
+
+/* Branding Colors */
+.text-primary {
+  @apply text-[#b81917];
+}
+
+.bg-primary {
+  @apply bg-[#b81917];
+}
+
+.text-secondary {
+  @apply text-[#fcf5eb];
+}
+
+.bg-secondary {
+  @apply bg-white;
+}
+
+/* Accordion (szh-accordion) */
+.szh-accordion__item-content {
+  transition: height 150ms cubic-bezier(0, 0, 0, 1);
+  @apply border-t border-[#b81917];
+}
+
+.szh-accordion__item-heading {
+  @apply grid;
+}
+
+.szh-accordion__item--status-entered,
+.szh-accordion__item--expanded {
+  @apply w-full justify-between bg-white;
+}
+
+.szh-accordion__item,
+.szh-accordion {
+  @apply overflow-hidden rounded;
+}
+
+.szh-accordion__item-button {
+  @apply w-full;
+}
+
+/* Dashed border */
+.dashed-wide {
+  border-left: 4px dashed transparent;
+  border-image: repeating-linear-gradient(
+      to bottom,
+      #3b82f6 0,
+      #3b82f6 10px,
+      transparent 10px,
+      transparent 20px
+    )
+    1;
+}
+
+/* === KEYFRAMES (Tetap boleh di Tailwind v4) === */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-15px) translateX(15px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
