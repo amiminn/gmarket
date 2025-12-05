@@ -23,7 +23,10 @@ export default function LoginPage() {
 
   const loginstore = useAuthStore((s) => s.login);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   async function submitregister() {
+    setIsLoading(true);
     const data = {
       username,
       email,
@@ -36,11 +39,13 @@ export default function LoginPage() {
       setSuccessMessage("Berhasil mendaftar");
       submitlogin();
     } catch (error) {
+      setIsLoading(false);
       setErrorMessage("Terjadi kesalahan");
     }
   }
 
   async function submitlogin() {
+    setIsLoading(true);
     const data = {
       username,
       password,
@@ -53,10 +58,12 @@ export default function LoginPage() {
       const dataprofile = resfirstlogin.data.data;
 
       if (resfirstlogin) {
+        setIsLoading(false);
         loginstore(res.data.token, dataprofile, dataprofile.role);
         window.location.href = "/";
       }
     } catch (error: any) {
+      setIsLoading(false);
       sweet.toastError(error.response.data.message);
       setErrorMessage("Terjadi kesalahan, " + error.response.data.message);
     }
@@ -87,9 +94,10 @@ export default function LoginPage() {
             />
             <button
               onClick={submitlogin}
+              disabled={isLoading}
               className="w-full py-2 text-white rounded cursor-pointer bg-slate-800"
             >
-              Login
+              {isLoading ? "loading.." : "Login"}
             </button>
           </div>
         </Card>
@@ -122,7 +130,7 @@ export default function LoginPage() {
               onClick={submitregister}
               className="w-full py-2 text-white rounded cursor-pointer bg-slate-800"
             >
-              Login
+              {isLoading ? "loading.." : "Register"}
             </button>
           </div>
         </Card>

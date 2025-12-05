@@ -20,7 +20,7 @@ export default function DashboardLayout({
   return (
     <ProtectedRoute>
       <div
-        className="flex min-h-screen w-full"
+        className="flex w-full min-h-screen"
         style={{ fontFamily: "JetBrains Mono" }}
       >
         <Header />
@@ -143,7 +143,7 @@ export function HeaderContent() {
       <h1 className="font-montserrat #dark:text-gray-200 truncate text-lg font-semibold text-gray-800 md:text-xl">
         {namepage}
       </h1>
-      <div className="flex flex-1 items-center justify-end pl-3">
+      <div className="flex items-center justify-end flex-1 pl-3">
         <button
           className={clsx(
             "hover:bg-muted-foreground/20 cursor-pointer #dark:text-gray-300 relative mr-2 size-8 rounded p-2 transition-all",
@@ -181,7 +181,7 @@ export function HeaderContent() {
                 <X size={16} />
               </button>
             </div>
-            <span className="w-full rounded bg-blue-50 p-2 text-blue-500">
+            <span className="w-full p-2 text-blue-500 rounded bg-blue-50">
               Soon
             </span>
           </motion.div>
@@ -189,7 +189,7 @@ export function HeaderContent() {
         <div className="relative">
           <button
             onClick={toggleTheme}
-            className="hover:bg-muted-foreground/20 size-8 rounded-lg p-2 transition-all duration-200"
+            className="p-2 transition-all duration-200 rounded-lg hover:bg-muted-foreground/20 size-8"
           >
             {theme === "light" ? <Sun /> : <Moon />}
           </button>
@@ -276,7 +276,7 @@ export function Header() {
       {isSideBar && (
         <button
           onClick={handleToggleisSideBar}
-          className="d-backdrop fixed z-100 h-screen w-screen bg-black bg-opacity-75 pr-10 transition-opacity duration-200 lg:hidden"
+          className="fixed w-screen h-screen pr-10 transition-opacity duration-200 bg-black bg-opacity-75 d-backdrop z-100 lg:hidden"
         ></button>
       )}
       <div
@@ -307,7 +307,7 @@ export function Header() {
                 >
                   <img
                     src={LOGOMINIBAR}
-                    className="h-10 w-full object-contain"
+                    className="object-contain w-full h-10"
                     alt="brand logo"
                   />
                 </Link>
@@ -321,14 +321,14 @@ export function Header() {
                 >
                   <img
                     src={LOGOBAR}
-                    className="w-full object-contain"
+                    className="object-contain w-full"
                     alt="brand logo"
                   />
                 </Link>
               )}
             </>
           </div>
-          <div className="absolute -right-3 bottom-0 top-0 hidden translate-y-7 items-center lg:flex">
+          <div className="absolute top-0 bottom-0 items-center hidden -right-3 translate-y-7 lg:flex">
             <button
               onClick={() => {
                 handleToggleisMiniBar();
@@ -368,7 +368,7 @@ export function Header() {
             </div>
             {mounted && !isMiniBar && (
               <div className="#dark:text-white pl-2 pt-1 text-sm">
-                <h2 className="fname font-semibold">Tholabul Amin</h2>
+                <h2 className="font-semibold fname">Tholabul Amin</h2>
                 <p className="#dark:text-gray-400 role mr-2 mt-0.5 text-xs font-semibold text-gray-500">
                   UI-UX
                 </p>
@@ -408,7 +408,7 @@ export function SideBarMenu() {
       <ul>
         {listsidebarmenu.map((item, index) => {
           return (
-            <li className="group mb-1 cursor-pointer" key={index}>
+            <li className="mb-1 cursor-pointer group" key={index}>
               <NavLink
                 className={({ isActive }) => {
                   return isActive ? activeclass : inactiveclass;
@@ -420,7 +420,7 @@ export function SideBarMenu() {
                 {mounted && !isMiniBar && (
                   <span className="flex flex-1">
                     <span
-                      className="ml-3 flex-1"
+                      className="flex-1 ml-3"
                       data-ninja-font="worksans_regular_normal_v29ya"
                     >
                       {item.name}
@@ -437,7 +437,7 @@ export function SideBarMenu() {
                   >
                     {item.name}
                     {item.isNew && (
-                      <span className="ml-2 rounded bg-orange-400 px-1 font-semibold text-white">
+                      <span className="px-1 ml-2 font-semibold text-white bg-orange-400 rounded">
                         {NEWLABEL}
                       </span>
                     )}
@@ -455,7 +455,7 @@ export function SideBarMenu() {
 function BetaLable() {
   return (
     <span
-      className="absolute right-2 top-3 rounded-md bg-orange-400 px-1 text-xs font-semibold text-white"
+      className="absolute px-1 text-xs font-semibold text-white bg-orange-400 rounded-md right-2 top-3"
       data-ninja-font="worksans_semibold_normal_v29ya"
     >
       {NEWLABEL}
@@ -468,21 +468,26 @@ export function LayoutSettingsPage({
 }: {
   children: React.ReactNode;
 }) {
+  async function logoutApp() {
+    localStorage.clear();
+    window.location.href = "/";
+  }
   return (
     <div className="flex flex-wrap lg:min-h-full lg:flex-nowrap">
-      <div className="flex w-full shrink-0 flex-col lg:w-60">
+      <div className="flex flex-col w-full shrink-0 lg:w-60">
         <SubMenuList />
         <div className="hidden pr-4 lg:block">
           <button
             type="submit"
-            className="flex w-full cursor-pointer items-center rounded-md border border-red-600 px-3 py-2 text-red-600 transition duration-200 hover:bg-red-600 hover:text-white"
+            onClick={logoutApp}
+            className="flex items-center w-full px-3 py-2 text-red-600 transition duration-200 border border-red-600 rounded-md cursor-pointer hover:bg-red-600 hover:text-white"
           >
             <LogOut />
             <span className="flex-1 pr-6 text-center">Logout</span>
           </button>
         </div>
       </div>
-      <div className="w-full flex-1 lg:border-l border-slate-200 lg:pl-6">
+      <div className="flex-1 w-full lg:border-l border-slate-200 lg:pl-6">
         {children}
       </div>
       <div className="block w-full py-10 lg:hidden"></div>
@@ -497,7 +502,7 @@ function SubMenuList() {
   const nonactive = `${staticClass} text-gray-700 #dark:text-gray-100`;
 
   return (
-    <div className="hidden flex-1 lg:block">
+    <div className="flex-1 hidden lg:block">
       <ul>
         {menusettings.map((item, index) => {
           return (
