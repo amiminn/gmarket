@@ -11,4 +11,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  preview: {
+    port: 1002,
+    strictPort: true,
+    allowedHosts: ["market.amiminn.com"],
+  },
 });
