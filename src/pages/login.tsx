@@ -56,7 +56,7 @@ export default function LoginPage() {
       setErrorMessage("");
       const resfirstlogin = await firstprofile(res.data.token);
       const dataprofile = resfirstlogin.data.data;
-
+      sweet.toastSuccess(res.data.message);
       if (resfirstlogin) {
         setIsLoading(false);
         loginstore(res.data.token, dataprofile, dataprofile.role);
