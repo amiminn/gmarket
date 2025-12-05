@@ -52,7 +52,6 @@ export default function LoginPage() {
     };
     try {
       const res = await login(data);
-      alert(JSON.stringify(res));
       setSuccessMessage("Berhasil login");
       setErrorMessage("");
       const resfirstlogin = await firstprofile(res.data.token);
