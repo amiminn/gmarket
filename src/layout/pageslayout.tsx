@@ -24,7 +24,7 @@ export function BottomBar() {
   const cart = useCartStore((state) => state.cart);
 
   return (
-    <div className="fixed bottom-0 max-w-[480px] mx-auto left-0 right-0 font-normal rounded-t bg-white drop-shadow">
+    <div className="fixed pt-[max(env(safe-area-inset-bottom),16px)] bottom-0 max-w-[480px] mx-auto left-0 right-0 font-normal rounded-t bg-white drop-shadow">
       <div className="flex w-full h-16 gap-3 p-2">
         <div className="grid w-full grid-cols-4">
           {listmenu.map((item) => (
@@ -58,7 +58,7 @@ export function BottomBar() {
 }
 export function BottomLoginBar() {
   return (
-    <div className="fixed bottom-0 left-1/2 w-full max-w-[480px] -translate-x-1/2 font-normal rounded-t bg-white drop-shadow">
+    <div className="pt-[max(env(safe-area-inset-bottom),16px)] fixed bottom-0 left-1/2 w-full max-w-[480px] -translate-x-1/2 font-normal rounded-t bg-white drop-shadow">
       <div className="flex w-full h-16 p-2">
         <NavLink
           className="flex items-center justify-center w-full text-white rounded bg-slate-800"

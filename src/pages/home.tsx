@@ -41,7 +41,7 @@ export default function HomePage() {
 
   return (
     <PagesLayout>
-      <div className="sticky top-0 z-10 flex items-center py-3 bg-white">
+      <div className="sticky top-0 z-10 flex items-center py-3 bg-white pt-[max(env(safe-area-inset-top),16px)]">
         <input
           type="text"
           className="w-full px-4 py-2 border-2 border-gray-300 rounded-l-full focus:outline-none"
