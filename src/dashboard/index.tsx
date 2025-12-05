@@ -86,7 +86,7 @@ function Card({
   icon,
 }: {
   name: string;
-  total: number;
+  total: number | string;
   icon: React.ReactNode;
 }) {
   return (
